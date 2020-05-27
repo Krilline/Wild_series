@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ season.number }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="card col-12" style="width: 18rem;">
+            <div class="card-body">
+                <h2 class="card-title">Saison {{ season.number }}, Année {{ season.year }}</h2>
+                <p class="card-text">{{ season.description }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for episode in episodes %}
+            <div class="card col-4" style="...">
+                <div class="card-body">
+                    <h2 class="card-title">Episode : {{ episode.number }} {{ episode.title }}</h2>
+                    <p class="card-text">{{ episode.synopsis }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
