@@ -11,12 +11,12 @@
             <p>{{ program.summary }}</p>
             <p>Categorie : {{ program.category.name }}</p>
             {% for season in seasons %}
-                <a href="{{ path('wild_show_season', {'id': season.id}) }}"><p>Saison : {{ season.number }}, Année : {{ season.year }}</p></a>
+                <a class="btn btn-primary" href="{{ path('wild_show_season', {'id': season.id}) }}"><p>Saison : {{ season.number }}, Année : {{ season.year }}</p></a>
             {% endfor %}
         </div>
     </div>
 
-    <a href="{{ path('wild_index') }}">
+    <a class="btn btn-primary" href="{{ path('wild_index') }}">
         Retour à l'accueil
     </a>
 
