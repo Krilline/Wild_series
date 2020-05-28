@@ -101,10 +101,12 @@ class WildController extends AbstractController
     public function showBySeason(Season $season) :Response
     {
         $episodes = $season->getEpisodes();
+        $program = $season->getProgram();
 
         return $this->render('wild/season.html.twig', [
             'season' => $season,
             'episodes' => $episodes,
+            'program' => $program,
         ]);
     }
 
