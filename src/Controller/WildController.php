@@ -57,9 +57,8 @@ class WildController extends AbstractController
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findOneBy(['title' => mb_strtolower($slug)]);
-        $seasons = $this->getDoctrine()
-            ->getRepository(Season::class)
-            ->findBy(['program' => $program]);
+        $seasons = $program->getSeasons();
+
         if(!$program) {
             throw $this->createNotFoundException(
               'No program with ' .$slug. ' title, found in program\'s table.'
@@ -96,20 +95,33 @@ class WildController extends AbstractController
 
     /**
      * @Route("/season/{id}", name="show_season")
-     * @param int $id
+     * @param Season $season
      * @return Response
      */
-    public function showBySeason(int $id) :Response
+    public function showBySeason(Season $season) :Response
     {
-        $season = $this->getDoctrine()
-            ->getRepository(Season::class)
-            ->findOneBy(['id' => $id]);
-        $episodes = $this->getDoctrine()
-            ->getRepository(Episode::class)
-            ->findBy(['season' => $season]);
+        $episodes = $season->getEpisodes();
+
         return $this->render('wild/season.html.twig', [
             'season' => $season,
             'episodes' => $episodes,
+        ]);
+    }
+
+    /**
+     * @Route("/episode/{id}", name="show_episode")
+     * @param Episode $episode
+     * @return Response
+     */
+    public function showEpisode(Episode $episode) :Response
+    {
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+
+        return $this->render('wild/episode.html.twig', [
+            'episode' => $episode,
+            'season' => $season,
+            'program' => $program,
         ]);
     }
 }

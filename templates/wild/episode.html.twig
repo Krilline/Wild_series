@@ -1,16 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }}{% endblock %}
+{% block title %}{{ episode.title }}{% endblock %}
 
 {% block body %}
     <div class="row">
-        {% for program in programs %}
-            <div class="card" style="width: 18rem;">
+        <div class="card col-12" style="width: 18rem;">
+            <div class="card-body">
+                <h1 class="mt-0">{{ program.title }}</h1>
+                <p>{{ program.summary }}</p>
+                <p>Categorie : {{ program.category.name }}</p>
+                <a class="btn btn-primary" href="{{ path('wild_show_program', {'slug': program.title|replace({' ':'-'})|lower}) }}">Voir le programme</a>
+                <h2 class="card-title">Saison {{ season.number }}, Année {{ season.year }}</h2>
+                <p class="card-text">{{ episode.synopsis }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="card col-12" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ program.title }}</h5>
-                    <p class="card-text">{{ program.summary }}</p>
+                    <h2 class="card-title">Episode : {{ episode.number }} {{ episode.title }}</h2>
+                    <p class="card-text">{{ episode.synopsis }}</p>
+                    <a class="btn btn-primary" href="{{ path('wild_show_season', {'id': season.id}) }}">Retour à la saison</a>
                 </div>
             </div>
-        {% endfor %}
     </div>
 {% endblock %}
