@@ -6,3 +6,6 @@
     
 * VIDEO SYMFONY11
     * https://www.loom.com/share/43996d97e19943a993c6c3cf8e30ea9c
+    
+* VIDEO SYMFONY12
+    * https://www.loom.com/share/87d1aabd0057474190882ec59adeb4c5
