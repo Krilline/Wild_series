@@ -4,6 +4,12 @@
 
 {% block body %}
     <div class="row">
+        {{ form_start(form) }}
+            {{ form_row(form.title) }}
+            <button class="btn btn-primary" type="submit" name="btnSearch">Rechercher</button>
+        {{ form_end(form) }}
+    </div>
+    <div class="row">
         {% for program in programs %}
             <div class="card col-4" style="width: 18rem;">
                 <a href="{{ path('wild_show_program', {'slug': program.title|replace({' ':'-'})|lower}) }}">
