@@ -18,3 +18,6 @@
     
 * VIDEO SYMFONY15
     * https://www.loom.com/share/82dfca3331da4a56b9c0c8f2b80cba06
+    
+* VIDEO SYMFONY16
+    * https://www.loom.com/share/7e7e8230c282408e893b84d21a96af35
