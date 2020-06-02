@@ -23,7 +23,7 @@
         {% for episode in episodes %}
             <div class="card col-4" style="...">
                 <div class="card-body">
-                    <a href="{{ path('wild_show_episode', {'id': episode.id}) }}"><h2 class="card-title">Episode : {{ episode.number }} {{ episode.title }}</h2></a>
+                    <a href="{{ path('wild_show_episode', {'slug': episode.slug}) }}"><h2 class="card-title">Episode : {{ episode.number }} {{ episode.title }}</h2></a>
                     <p class="card-text">{{ episode.synopsis }}</p>
                 </div>
             </div>

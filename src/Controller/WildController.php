@@ -50,38 +50,16 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/show/{slug}",
-     *     requirements={"slug"="[a-z0-9-]+$"},
-     *     defaults={"slug"=null},
-     *     name="show_program")
-     * @param $slug
+     * @Route("/show/{slug}", name="show_program")
+     * @param Program $program
      * @return Response
      */
-    public function showByProgram($slug) : Response
+    public function showByProgram(Program $program) : Response
     {
-        if (!$slug) {
-            throw $this
-                ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
-        }
-        $slug = preg_replace(
-            '/-/',
-            ' ', ucwords(trim(strip_tags($slug)), "-")
-        );
-
-        $program = $this->getDoctrine()
-            ->getRepository(Program::class)
-            ->findOneBy(['title' => mb_strtolower($slug)]);
         $seasons = $program->getSeasons();
-
-        if(!$program) {
-            throw $this->createNotFoundException(
-              'No program with ' .$slug. ' title, found in program\'s table.'
-            );
-        }
 
         return $this->render('wild/show.html.twig', [
             'program' => $program,
-            'slug' => $slug,
             'seasons' => $seasons,
         ]);
     }
@@ -125,7 +103,7 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/episode/{id}", name="show_episode")
+     * @Route("/episode/{slug}", name="show_episode")
      * @param Episode $episode
      * @return Response
      */
@@ -142,7 +120,7 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/actor/{id}", name="show_actor")
+     * @Route("/actor/{slug}", name="show_actor")
      * @param Actor $actor
      * @return Response
      */

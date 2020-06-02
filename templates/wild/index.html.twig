@@ -12,7 +12,7 @@
     <div class="row">
         {% for program in programs %}
             <div class="card col-4" style="width: 18rem;">
-                <a href="{{ path('wild_show_program', {'slug': program.title|replace({' ':'-'})|lower}) }}">
+                <a href="{{ path('wild_show_program', {'slug': program.slug}) }}">
                     <img src="{{ program.poster }}" class="card-img-top" alt="...">
                 </a>
                 <div class="card-body">
