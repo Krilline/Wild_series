@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ slug }}{% endblock %}
+{% block title %}{{ program.title }}{% endblock %}
 
 {% block body %}
 
@@ -13,7 +13,7 @@
             <h2><strong>Acteur :</strong></h2>
             <ul>
                 {% for actor in program.actors %}
-                    <a href="{{ path('wild_show_actor', {'id': actor.id}) }}"><li><h4>{{ actor.name }}</h4></li></a>
+                    <a href="{{ path('wild_show_actor', {'slug': actor.slug}) }}"><li><h4>{{ actor.name }}</h4></li></a>
                 {% else %}
                     <h4>Aucun acteur pour cette série</h4>
                 {% endfor %}
