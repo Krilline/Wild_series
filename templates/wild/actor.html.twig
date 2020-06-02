@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ actor.name }}{% endblock %}
+
+{% block body %}
+    <br>
+    <h1>{{ actor.name }}</h1>
+    <hr>
+    <div class="row">
+        {% for program in programs %}
+            <div class="card col-4" style="width: 18rem;">
+                <a href="{{ path('wild_show_program', {'slug': program.title|replace({' ':'-'})|lower}) }}">
+                    <img src="{{ program.poster }}" class="card-img-top" alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text">{{ program.summary }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="btn btn-primary" href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
