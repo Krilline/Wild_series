@@ -12,3 +12,6 @@
     
 * VIDEO SYMFONY13
     * https://www.loom.com/share/80e4b49507504312bf2fbade10962129
+    
+* VIDEO SYMFONY14
+    * https://www.loom.com/share/3850dd7995934d1ab469192e65832d2e

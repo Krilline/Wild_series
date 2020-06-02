@@ -10,6 +10,14 @@
             <h1 class="mt-0">{{ program.title }}</h1>
             <p>{{ program.summary }}</p>
             <p>Categorie : {{ program.category.name }}</p>
+            <h2><strong>Acteur :</strong></h2>
+            <ul>
+                {% for actor in program.actors %}
+                    <a href="{{ path('wild_show_actor', {'id': actor.id}) }}"><li><h4>{{ actor.name }}</h4></li></a>
+                {% else %}
+                    <h4>Aucun acteur pour cette série</h4>
+                {% endfor %}
+            </ul>
             {% for season in seasons %}
                 <a class="btn btn-primary" href="{{ path('wild_show_season', {'id': season.id}) }}"><p>Saison : {{ season.number }}, Année : {{ season.year }}</p></a>
             {% endfor %}
