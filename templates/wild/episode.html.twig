@@ -24,4 +24,41 @@
                 </div>
             </div>
     </div>
+    {% if app.user %}
+        <div class="card mb-3 mr-3 ml-3 mt-3">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col">
+                    {{ form_row(form.comment) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.rate) }}
+                </div>
+            </div>
+            <div style="text-align: center">
+                <button class="btn btn-secondary" type="submit">Ajouter un commentaire</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endif %}
+    {% if episode.comments %}
+        {% for comment in episode.comments|sort((a,b) => b.createdAt <=> a.createdAt) %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <p>Posté le : {{ comment.createdAt.format('Y-m-d H:i:s') }}</p>
+                    <p class="card-left">Note {{ comment.rate }}<strong>/20</strong></p>
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>{{ comment.comment }}</p>
+                        <footer class="blockquote-footer">{{ comment.author.username }}</footer>
+                    </blockquote>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <div class="row">
+                <h2 style="text-align: center">Aucun commentaires</h2>
+            </div>
+    {% endif %}
 {% endblock %}
