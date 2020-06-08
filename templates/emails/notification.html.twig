@@ -1,0 +1,24 @@
+{% block body %}
+
+    <div style="border: solid #222222; border-radius: 10px; display: flex; align-items: flex-start; flex-direction: column;">
+        <img style="align-self: center; max-width: 18rem;" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div style="border: solid #222222; border-radius: 10px; padding: 20px">
+            <h1 style="text-align: center">{{ program.title }}</h1>
+            <p style="align-self: center">{{ program.summary }}</p>
+            <p style="align-self: center"><strong>Catégorie : </strong>{{ program.category.name }}</p>
+            <h2 style="align-self: center"><strong>Acteur :</strong></h2>
+            <ul style="align-self: center">
+                {% for actor in program.actors %}
+                    <a href="http://127.0.0.1:8000/wild/show/{{ actor.slug }}"><li><h4>{{ actor.name }}</h4></li></a>
+                {% else %}
+                    <h4>Aucun acteur pour cette série</h4>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <a style="border-radius: 10px; text-decoration: none; font-size: 20px; color: black; text-align: center; display: block; border: solid #222222; background-color: #5eb5e0; padding: 15px;" href="http://127.0.0.1:8000/wild/show/{{ program.slug }}">
+        Accéder au programme
+    </a>
+
+{% endblock %}

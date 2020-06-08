@@ -24,3 +24,6 @@
     
 * VIDEO SYMFONY17
     * https://www.loom.com/share/b4afd46c48dc4420be6499348ceeb037
+    
+* VIDEO SYMFONY18
+    * https://www.loom.com/share/36659fd4370f4cc3b7456d5d63002337
