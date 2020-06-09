@@ -24,7 +24,7 @@
                 </div>
             </div>
     </div>
-    {% if app.user %}
+    {% if is_granted('ROLE_SUBSCRIBER') %}
         <div class="card mb-3 mr-3 ml-3 mt-3">
             {{ form_start(form) }}
             <div class="row">
@@ -53,6 +53,11 @@
                         <p>{{ comment.comment }}</p>
                         <footer class="blockquote-footer">{{ comment.author.username }}</footer>
                     </blockquote>
+                    {% if is_granted('ROLE_SUBSCRIBER') %}
+                        {% if app.user.email is same as(comment.author.username) %}
+                            <a class="btn btn-danger" href="{{ path('wild_comment_delete', {'id': comment.id}) }}">Supprimer</a>
+                        {% endif %}
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
