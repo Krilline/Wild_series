@@ -27,6 +27,7 @@ class UserFixtures extends Fixture
             $faker = Factory::create();
             $subscriber = new User();
             $subscriber->setEmail($faker->unique()->email);
+            $subscriber->setName($faker->unique()->name);
             $subscriber->setRoles(['ROLE_SUBSCRIBER']);
             $subscriber->setPassword($this->passwordEncoder->encodePassword(
                 $subscriber,
@@ -37,6 +38,7 @@ class UserFixtures extends Fixture
 
         $admin = new User();
         $admin->setEmail('paulendor@gmail.com');
+        $admin->setName('Paul The Admin');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
