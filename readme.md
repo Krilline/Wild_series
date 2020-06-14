@@ -36,3 +36,6 @@
     
 * VIDEO SYMFONY21
     * https://www.loom.com/share/626796484372488cbce49a499963044f
+    
+* VIDEO SYMFONY22
+    * https://www.loom.com/share/f01fd74e1b62436b9b1972dcf4afd0fa
