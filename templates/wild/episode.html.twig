@@ -51,11 +51,11 @@
                 <div class="card-body">
                     <blockquote class="blockquote mb-0">
                         <p>{{ comment.comment }}</p>
-                        <footer class="blockquote-footer">{{ comment.author.username }}</footer>
+                        <footer class="blockquote-footer">{{ comment.author.name }}</footer>
                     </blockquote>
                     {% if is_granted('ROLE_SUBSCRIBER') %}
                         {% if app.user.email is same as(comment.author.username) %}
-                            <a class="btn btn-danger" href="{{ path('wild_comment_delete', {'id': comment.id}) }}">Supprimer</a>
+                            {% include 'wild/_delete_form.html.twig' %}
                         {% endif %}
                     {% endif %}
                 </div>

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h1>Hello {{ user.name }}</h1>
+            <p>Your email is {{ user.username }}</p>
+            <p>Your password is ***********</p> <a href="#" class="btn btn-secondary">Edit</a>
+        </div>
+    </div>
+{% endblock %}
