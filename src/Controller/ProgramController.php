@@ -46,9 +46,11 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', "Une nouvelle série a été ajoutée avec succés !");
+
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('mailer_from'))
-                ->to($this->getParameter('mailer_to'))
+                ->to('andraurelien@yahoo.fr')
                 ->subject("Une nouvelle série vient d'etre publiée !")
                 ->htmlTemplate('emails/notification.html.twig')
                 ->context([
@@ -91,6 +93,8 @@ class ProgramController extends AbstractController
             $entityManager->persist($program);
             $entityManager->flush();
 
+            $this->addFlash('success', "La série a bien été modifiée avec succés !");
+
             return $this->redirectToRoute('program_index');
         }
 
@@ -109,6 +113,8 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+
+            $this->addFlash('danger', "La série a été supprimée avec succés !");
         }
 
         return $this->redirectToRoute('program_index');
